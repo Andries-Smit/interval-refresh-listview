@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="org.flockofbirds.widget.intervalrefreshlistview.IntervalRefreshListview" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../xsd/widget.xsd">
+    <name>Interval Refresh Listview</name>
+    <description>Refresh listview on time interval</description>
+    <icon/>
+    <properties>
+        <property key="targetName" type="string">
+            <caption>Target list view</caption>
+            <category>General</category>
+            <description>The name of the listview
+NOTE: 'Load More'' button will be hidden, because the 'more' items will hidden on refresh</description>
+        </property>
+        <property key="refreshInterval" type="integer" defaultValue="10000">
+            <caption>Refresh interval</caption>
+            <category>General</category>
+            <description>Interval in milliseconds, the time between loading.
+NOTE: interval timers will prevent sessions from expiring, so users will not be logged off automatically based on non activity</description>
+        </property>
+    </properties>
+</widget>
