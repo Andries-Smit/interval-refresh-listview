@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="org.flockofbirds.widget.intervalrefreshlistview.IntervalRefreshListview" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../xsd/widget.xsd">
+<widget id="IntervalRefreshListview.widget.IntervalRefreshListview" needsEntityContext="true"  offlineCapable="true" xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../xsd/widget.xsd">
     <name>Interval Refresh Listview</name>
     <description>Refresh listview on time interval</description>
     <icon/>
@@ -15,6 +15,14 @@ NOTE: 'Load More'' button will be hidden, because the 'more' items will hidden o
             <category>General</category>
             <description>Interval in milliseconds, the time between loading.
 NOTE: interval timers will prevent sessions from expiring, so users will not be logged off automatically based on non activity</description>
+        </property>
+        <property key="allowRefreshAttribute" type="attribute" required="false">
+            <caption>Will update</caption>
+            <category>General</category>
+            <description>Boolean attribute, when true it will refresh. It could be used to pause the refreshes</description>
+            <attributeTypes>
+                <attributeType name="Boolean"/>
+            </attributeTypes>
         </property>
     </properties>
 </widget>
