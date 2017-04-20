@@ -4,8 +4,6 @@ import * as domConstruct from "dojo/dom-construct";
 import * as domClass from "dojo/dom-class";
 import * as registry from "dijit/registry";
 
-import "./ui/IntervalRefreshListview.css";
-
 interface ListView extends mxui.widget._WidgetBase {
     _loadData: (callback: () => void) => void;
     connectedIntervalRefreshListview?: string;
@@ -18,7 +16,7 @@ class IntervalRefreshListview extends WidgetBase {
 
     private targetWidget: ListView;
     private targetNode: HTMLElement | null;
-    private timerHandle: number;
+    private timerHandle?: number;
     private isSetup: boolean;
     private isRunning: boolean;
     private allowRefresh: boolean;
@@ -77,9 +75,12 @@ class IntervalRefreshListview extends WidgetBase {
     }
 
     private stopRefreshing() {
-        this.isRunning = false;
-        if (this.timerHandle) {
-            window.clearInterval(this.timerHandle);
+        if (this.isRunning) {
+            this.isRunning = false;
+            if (this.timerHandle) {
+                window.clearInterval(this.timerHandle);
+                this.timerHandle = undefined;
+            }
         }
     }
 
@@ -108,7 +109,7 @@ class IntervalRefreshListview extends WidgetBase {
         }
 
         if (!targetNode) {
-            this.renderAlert(`Unable to find listview with the name "${targetName}"`);
+            this.renderAlert(`Unable to find List View with the name "${targetName}"`);
         }
 
         return targetNode;
@@ -125,10 +126,10 @@ class IntervalRefreshListview extends WidgetBase {
                         + `to widget ${targetWidget.connectedIntervalRefreshListview}`);
                 }
             } else {
-                this.renderAlert("This Mendix version is incompatible with the auto load more widget");
+                this.renderAlert("This Mendix version is incompatible with the 'Interval Refresh List Vies' widget");
             }
         } else {
-            this.renderAlert(`Supplied target name "${this.targetName}" is not of the type listview`);
+            this.renderAlert(`Supplied target name "${this.targetName}" is not of the type 'List view'`);
         }
 
         return false;
@@ -142,7 +143,7 @@ class IntervalRefreshListview extends WidgetBase {
 
     private renderAlert(message: string) {
         domConstruct.place(
-            `<div class='alert alert-danger widget-auto-load-more-alert'>${message}</div>`,
+            `<div class="alert alert-danger widget-refresh-interval-listview-alert" role="alert">${message}</div>`,
             this.domNode,
             "only"
         );
