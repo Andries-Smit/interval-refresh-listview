@@ -7,11 +7,11 @@ module.exports = {
     entry: "./src/IntervalRefreshListview.ts",
     output: {
         path: path.resolve(__dirname, "dist/tmp"),
-        filename: "src/org/flockofbirds/widget/intervalrefreshlistview/IntervalRefreshListview.js",
+        filename: "src/IntervalRefreshListview/widget/IntervalRefreshListview.js",
         libraryTarget: "umd"
     },
     resolve: {
-        extensions: [ ".ts", ".js", ".json" ],
+        extensions: [ ".ts", ".js" ],
         alias: {
             "tests": path.resolve(__dirname, "./tests")
         }
@@ -28,17 +28,10 @@ module.exports = {
     devtool: "source-map",
     externals: [ /^mxui\/|^mendix\/|^dojo\/|^dijit\// ],
     plugins: [
-        new CopyWebpackPlugin([
-            { from: "src/**/*.js" },
-            { from: "src/**/*.xml" }
-        ], {
-            copyUnmodified: true
-        }),
+        new CopyWebpackPlugin([ { from: "src/**/*.xml" } ], { copyUnmodified: true }),
         new ExtractTextPlugin({
-            filename: "./src/org/flockofbirds/widget/intervalrefreshlistview/ui/IntervalRefreshListview.css"
+            filename: "./src/IntervalRefreshListview/widget/ui/IntervalRefreshListview.css"
         }),
-        new webpack.LoaderOptionsPlugin({
-            debug: true
-        })
+        new webpack.LoaderOptionsPlugin({ debug: true })
     ]
 };
