@@ -137,7 +137,11 @@ class IntervalRefreshListview extends WidgetBase {
 
     private setInterval() {
         this.timerHandle = window.setTimeout(() => {
-            this.targetWidget._loadData(() => this.setInterval());
+            // It suppose to cancel the interval in case that not happen, just double check.
+            const allow = this.contextObject && this.contextObject.get(this.allowRefreshAttribute) as boolean;
+            if (allow) {
+                this.targetWidget._loadData(() => this.setInterval());
+            }
         }, this.refreshInterval);
     }
 

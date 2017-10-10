@@ -1,7 +1,7 @@
 {
   "name": "interval-refresh-listview",
   "widgetName": "IntervalRefreshListview",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "Refresh listview on time interval",
   "copyright": "Flock of Birds International BV.",
   "author": "Andries Smit (http://www.flockofbirds.org/)",

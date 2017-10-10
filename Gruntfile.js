@@ -6,7 +6,7 @@ Object.assign(webpackConfigRelease, webpackConfig, {
     devtool: false
 });
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     var pkg = grunt.file.readJSON("package.json");
     grunt.initConfig({
 
@@ -74,6 +74,7 @@ module.exports = function (grunt) {
             build: [
                 "./dist/" + pkg.version + "/" + pkg.widgetName + "/*",
                 "./dist/tmp/**/*",
+                "./dist/tsc/**/*",
                 "./dist/MxTestProject/deployment/web/widgets/" + pkg.widgetName + "/*",
                 "./dist/MxTestProject/widgets/" + pkg.widgetName + ".mpk"
             ]
